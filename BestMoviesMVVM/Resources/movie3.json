@@ -1,0 +1,11 @@
+{
+    "im:name": {"label":"John Wick 4"},
+    "im:image":[
+        {"label":"https://is4-ssl.mzstatic.com/image/thumb/Video116/v4/8e/04/5c/8e045c4b-d325-7520-4ca6-872e29a4812f/SPE_NO_HARD_FEELINGS_TH_PRE_ITUNES_WW_ARTWORK_EN_2000x3000_3UZZ7K000000UN.lsr/39x60bb.png", "attributes":{"height":"60"}},
+        {"label":"https://is4-ssl.mzstatic.com/image/thumb/Video116/v4/8e/04/5c/8e045c4b-d325-7520-4ca6-872e29a4812f/SPE_NO_HARD_FEELINGS_TH_PRE_ITUNES_WW_ARTWORK_EN_2000x3000_3UZZ7K000000UN.lsr/39x60bb.png", "attributes":{"height":"60"}},
+    {"label":"https://is3-ssl.mzstatic.com/image/thumb/Video116/v4/8e/04/5c/8e045c4b-d325-7520-4ca6-872e29a4812f/SPE_NO_HARD_FEELINGS_TH_PRE_ITUNES_WW_ARTWORK_EN_2000x3000_3UZZ7K000000UN.lsr/113x170bb.png", "attributes":{"height":"170"}}],
+    "summary": {"label":"Jennifer Lawrence produces and stars in No Hard Feelings, a laugh-out-loud, edgy comedy from Gene Stupnitsky (director Good Boys, co-writer of Bad Teacher).\r\nMaddie (Lawrence) thinks she’s found the answer to her financial troubles when she discovers an intriguing job listing: wealthy helicopter parents looking for someone to \"date\" their introverted 19-year-old son, Percy, and bring him out of his shell before he leaves for college. But awkward Percy proves to be more of a challenge than she expected, and time is running out. She has one summer to make him a man or lose it all."},
+    "im:price": {"label":"$29.99", "attributes": {"amount":"19.99", "currency":"USD"}},
+    "im:releaseDate" : {"label":"2023-06-16T00:00:00-07:00", "attributes":{"label":"June 16, 2023"}}
+}
+
