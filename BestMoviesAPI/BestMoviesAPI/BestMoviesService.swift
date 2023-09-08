@@ -7,9 +7,12 @@
 
 import Foundation
 import Alamofire
+import Combine
 
 public protocol BestMoviesServiceProtocol {
+    
     func fetchBestMovies(completion: @escaping (Result<BestMoviesResponse>) -> Void)
+
 }
 
 public final class BestMoviesService: BestMoviesServiceProtocol {
@@ -23,8 +26,8 @@ public final class BestMoviesService: BestMoviesServiceProtocol {
     
     public func fetchBestMovies(completion: @escaping (Result<BestMoviesResponse>) -> Void) {
         //http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topMovies/json
-        let urlString = "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topMovies/json"
-        AF.request(urlString).responseData { response in
+        
+        AF.request(Environment.apiBaseURLString).responseData { response in
             switch response.result {
                 case .success(let data):
                     let decoder = Decoders.plainDateDecoder

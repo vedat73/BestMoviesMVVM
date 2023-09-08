@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE960B262AAB3AB200732B45 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE960B252AAB3AB200732B45 /* Environment.swift */; };
+		BE960B282AAB3B9300732B45 /* BestMoviesReactiveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE960B272AAB3B9300732B45 /* BestMoviesReactiveService.swift */; };
+		BE960B2D2AAB3C9500732B45 /* BestMoviesAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE960B2C2AAB3C9500732B45 /* BestMoviesAPIError.swift */; };
+		BE960B2F2AAB413F00732B45 /* StatusCode+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE960B2E2AAB413F00732B45 /* StatusCode+Helper.swift */; };
 		BEF0CB6F2A9113E20019C1F9 /* BestMoviesAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF0CB6E2A9113E20019C1F9 /* BestMoviesAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BEF0CB7E2A9115BC0019C1F9 /* BestMoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF0CB7D2A9115BC0019C1F9 /* BestMoviesService.swift */; };
 		BEF0CB872A9116130019C1F9 /* BestMoviesAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF0CB6B2A9113E20019C1F9 /* BestMoviesAPI.framework */; };
@@ -49,6 +53,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BE960B252AAB3AB200732B45 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		BE960B272AAB3B9300732B45 /* BestMoviesReactiveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestMoviesReactiveService.swift; sourceTree = "<group>"; };
+		BE960B2C2AAB3C9500732B45 /* BestMoviesAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestMoviesAPIError.swift; sourceTree = "<group>"; };
+		BE960B2E2AAB413F00732B45 /* StatusCode+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatusCode+Helper.swift"; sourceTree = "<group>"; };
 		BEF0CB6B2A9113E20019C1F9 /* BestMoviesAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BestMoviesAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF0CB6E2A9113E20019C1F9 /* BestMoviesAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BestMoviesAPI.h; sourceTree = "<group>"; };
 		BEF0CB7D2A9115BC0019C1F9 /* BestMoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestMoviesService.swift; sourceTree = "<group>"; };
@@ -82,6 +90,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE960B242AAB3AA600732B45 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				BE960B252AAB3AB200732B45 /* Environment.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		BE960B292AAB3C2700732B45 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				BE960B2C2AAB3C9500732B45 /* BestMoviesAPIError.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
 		BEF0CB612A9113E20019C1F9 = {
 			isa = PBXGroup;
 			children = (
@@ -104,11 +128,14 @@
 		BEF0CB6D2A9113E20019C1F9 /* BestMoviesAPI */ = {
 			isa = PBXGroup;
 			children = (
+				BE960B292AAB3C2700732B45 /* Types */,
+				BE960B242AAB3AA600732B45 /* Configuration */,
 				BEF0CBAF2A911D380019C1F9 /* Helpers */,
 				BEF0CBAB2A9119A00019C1F9 /* Responses */,
 				BEF0CBA72A91198F0019C1F9 /* DTOs */,
 				BEF0CB6E2A9113E20019C1F9 /* BestMoviesAPI.h */,
 				BEF0CB7D2A9115BC0019C1F9 /* BestMoviesService.swift */,
+				BE960B272AAB3B9300732B45 /* BestMoviesReactiveService.swift */,
 			);
 			path = BestMoviesAPI;
 			sourceTree = "<group>";
@@ -153,6 +180,7 @@
 			children = (
 				BEF0CBB02A911D4A0019C1F9 /* Decoders.swift */,
 				BEF0CBB32A911D970019C1F9 /* Result.swift */,
+				BE960B2E2AAB413F00732B45 /* StatusCode+Helper.swift */,
 			);
 			name = Helpers;
 			path = ..;
@@ -279,8 +307,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEF0CBAD2A9119B90019C1F9 /* BestMoviesResponse.swift in Sources */,
+				BE960B262AAB3AB200732B45 /* Environment.swift in Sources */,
+				BE960B2F2AAB413F00732B45 /* StatusCode+Helper.swift in Sources */,
 				BEF0CBB42A911D970019C1F9 /* Result.swift in Sources */,
 				BEF0CBA92A91199B0019C1F9 /* movie.swift in Sources */,
+				BE960B282AAB3B9300732B45 /* BestMoviesReactiveService.swift in Sources */,
+				BE960B2D2AAB3C9500732B45 /* BestMoviesAPIError.swift in Sources */,
 				BEF0CBB12A911D4A0019C1F9 /* Decoders.swift in Sources */,
 				BEF0CB7E2A9115BC0019C1F9 /* BestMoviesService.swift in Sources */,
 			);

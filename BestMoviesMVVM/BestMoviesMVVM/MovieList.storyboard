@@ -16,6 +16,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gYc-ZW-T1h">
+                                <rect key="frame" x="171.66666666666666" y="401" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="8Q1-go-Fuf"/>
+                                    <constraint firstAttribute="height" constant="50" id="Xxq-21-2cF"/>
+                                </constraints>
+                                <color key="color" systemColor="systemMintColor"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XZ-am-VPc">
+                                <rect key="frame" x="71.666666666666686" y="396" width="250" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="HfV-Vq-Sew"/>
+                                    <constraint firstAttribute="height" constant="60" id="Q0J-FO-0Ei"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" systemColor="systemPinkColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="j2g-oP-Tzf">
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -54,13 +72,19 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="4XZ-am-VPc" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="2QL-M0-y8o"/>
                             <constraint firstItem="j2g-oP-Tzf" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="PL7-zY-rSO"/>
+                            <constraint firstItem="gYc-ZW-T1h" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Rnv-RZ-MVq"/>
                             <constraint firstItem="j2g-oP-Tzf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="a7z-Rt-hAs"/>
+                            <constraint firstItem="gYc-ZW-T1h" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="d3x-ng-ANr"/>
+                            <constraint firstItem="4XZ-am-VPc" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="mKb-QY-4sg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="j2g-oP-Tzf" secondAttribute="bottom" id="ugW-nf-Yha"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="j2g-oP-Tzf" secondAttribute="trailing" id="wLX-ZF-ekg"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="gYc-ZW-T1h" id="GbV-TY-xhL"/>
+                        <outlet property="errorLabel" destination="4XZ-am-VPc" id="ol8-m5-ROw"/>
                         <outlet property="tableView" destination="j2g-oP-Tzf" id="xom-LH-Tt8"/>
                     </connections>
                 </viewController>
@@ -72,6 +96,12 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

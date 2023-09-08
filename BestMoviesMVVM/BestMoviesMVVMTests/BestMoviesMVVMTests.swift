@@ -5,7 +5,7 @@
 //  Created by Vedat Ozlu on 20.08.2023.
 //
 
-import XCTest
+/*import XCTest
 @testable import BestMoviesAPI
 @testable import BestMoviesMVVM
 
@@ -107,3 +107,4 @@ extension Array { //for preventing crash during test
         return self[index]
     }
 }
+*/

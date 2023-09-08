@@ -7,45 +7,76 @@
 
 import UIKit
 import BestMoviesAPI
+import Combine
 
 final class MovieListViewController: UIViewController {
     
+    // MARK: - Properties
+    
     @IBOutlet weak private var tableView: UITableView!
-    var viewModel: MovieListViewModelProtocol! {
-        didSet {
-            viewModel.delegate = self
-        }
-    }
+    
+    @IBOutlet weak private var activityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak private var errorLabel: UILabel!
+    
+    var viewModel: MovieListViewModelProtocol! 
+    
     private var movieList: [MoviePresentation] = []
     
+    private var subscriptions: Set<AnyCancellable> = []
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        bind(to: viewModel)
+        
         viewModel.load()
     }
-}
-
-extension MovieListViewController: MovieListViewModelDelegate {
-    
-    func handleViewModelOutput(_ output: MovieListViewModelOutput) {
-        switch output {
-            case .updateTitle(let title):
-                self.title = title
-            case .setLoading(let isLoading):
-                print(isLoading ? "isloading true " : "isloading false")
-            case .showMovieList(let movieList):
-                self.movieList = movieList
-                tableView.reloadData()
-        }
+   
+    func bind(to viewModel: MovieListViewModelProtocol) {
+        
+        viewModel.loadingPublisher
+            .sink { [weak self] isLoading in
+                self?.activityIndicator.isHidden = !isLoading
+                isLoading ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
+            }
+            .store(in: &subscriptions)
+        
+        viewModel.hasBestMoviesDataPublisher
+            .map { !$0 }
+            .assign(to: \.isHidden, on: tableView)
+            .store(in: &subscriptions)
+        
+        viewModel.hasErrorPublisher
+            .map { !$0 }
+            .assign(to: \.isHidden, on: errorLabel)
+            .store(in: &subscriptions)
+        
+        viewModel.bestMoviesStatePublisher
+            .sink { [weak self] apiState in
+                switch apiState {
+                        
+                    case .data(let presentationList):
+                        self?.movieList = presentationList
+                        self?.tableView.reloadData()
+                        
+                    case .error(let error):
+                        switch error {
+                            case .failedRequest:
+                                self?.errorLabel.text = "Request failed"
+                            case .noInternetConnection:
+                                self?.errorLabel.text = "There is no internet connection"
+                            case .invalidResponse:
+                                self?.errorLabel.text = "Response doesn't match with model data"
+                        }
+                        
+                    case .loading:
+                        break
+                }
+            }
+            .store(in: &subscriptions)
     }
-    
-    func navigate(to route: MovieListViewRoute) {
-        switch route {
-            case .detail(let viewModel):
-                let viewController = MovieDetailBuilder.make(with: viewModel)
-                show(viewController, sender: nil)
-        }
-    }
-    
 }
 
 extension MovieListViewController: UITableViewDataSource {
@@ -75,6 +106,12 @@ extension MovieListViewController: UITableViewDataSource {
 extension MovieListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.selectMovie(at: indexPath.row)
+        showDetail(with: viewModel.selectMovie(at: indexPath.row))
+    }
+    
+    private func showDetail(with detailViewModel: MovieDetailViewModel) {
+        let viewController = MovieDetailBuilder.make(with: detailViewModel)
+        
+        self.show(viewController, sender: nil)
     }
 }

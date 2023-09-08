@@ -13,6 +13,6 @@ let app = AppContainer()
 
 final class AppContainer {
     let router = AppRouter()
-    let service = BestMoviesService()
+    let service = BestMoviesReactiveService()
     let mediaService = MediaService()
 }

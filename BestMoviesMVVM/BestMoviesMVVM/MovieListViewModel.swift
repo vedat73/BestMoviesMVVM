@@ -5,44 +5,82 @@
 //  Created by Vedat Ozlu on 20.08.2023.
 //
 
-import Foundation
 import BestMoviesAPI
+import Combine
+import Foundation
+
 
 final class MovieListViewModel: MovieListViewModelProtocol {
-    var delegate: MovieListViewModelDelegate?
-    private let service: BestMoviesServiceProtocol
+    
+    // MARK: - Properties
+    
+    var loadingPublisher: AnyPublisher<Bool, Never> {
+        bestMoviesStatePublisher
+            .compactMap { $0.isLoading }
+            .eraseToAnyPublisher()
+    }
+    
+    var hasBestMoviesDataPublisher: AnyPublisher<Bool, Never> {
+        bestMoviesStatePublisher
+            .compactMap { $0.bestMoviesResponseData != nil }
+            .eraseToAnyPublisher()
+    }
+    
+    var hasErrorPublisher: AnyPublisher<Bool, Never> {
+        bestMoviesStatePublisher
+            .compactMap { $0.bestMoviesAPIError != nil }
+            .eraseToAnyPublisher()
+    }
+    
+    private let service: BestMoviesReactiveServiceProtocol
+    
     private var movies: [Movie] = []
-    init(service: BestMoviesServiceProtocol) {
+    
+    private let bestMoviesStateSubject = PassthroughSubject<BestMoviesAPIState, Never>()
+    
+    var bestMoviesStatePublisher : AnyPublisher<BestMoviesAPIState, Never> {
+        bestMoviesStateSubject
+            .eraseToAnyPublisher()
+    }
+    
+    private var subscriptions: Set<AnyCancellable> = []
+    
+    // MARK: - Initialization
+    
+    init(service: BestMoviesReactiveServiceProtocol) {
         self.service = service
     }
     
+    
     func load() {
-        notify(.updateTitle("Movies"))
-        notify(.setLoading(true))
         
-        service.fetchBestMovies {[weak self] result in
-            guard let self = self else { return }
-            self.notify(.setLoading(false))
-            
-            switch result {
-                case .success(let response):
-                    self.movies = response.entry
-                    let presentations = response.entry.map { MoviePresentation(movie: $0) }
-                    self.notify(.showMovieList(presentations))
-                case .failure(let error):
-                    print(error.localizedDescription)
+        bestMoviesStateSubject.send(.loading)
+        
+        service.fetchBestMovies()
+            .sink { [weak self] completion in
+                switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        self?.bestMoviesStateSubject.send(.error(error))
+                }
+            } receiveValue: { [weak self] data in
+                
+                guard let self = self else { return }
+               
+                self.movies = data.entry
+                let presentations = data.entry.map { MoviePresentation(movie: $0) }
+                
+                self.bestMoviesStateSubject.send(.data(presentations))
             }
-        }
+            .store(in: &subscriptions)
     }
       
-    func selectMovie(at index: Int) {
+    func selectMovie(at index: Int) -> MovieDetailViewModel {
         let movie = movies[index]
-        let detailViewModel = MovieDetailViewModel(movie: movie)
-        delegate?.navigate(to: .detail(detailViewModel))
-    }
-    
-    private func notify(_ output: MovieListViewModelOutput) {
-        delegate?.handleViewModelOutput(output)
+        return MovieDetailViewModel(movie: movie)
+        /*let detailViewModel = MovieDetailViewModel(movie: movie)
+        bestMoviesStateSubject.send(.navigate(.detail(detailViewModel)))*/
     }
     
 }

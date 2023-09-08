@@ -12,6 +12,7 @@
 		BE8019F42A95194200C39030 /* MediaAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8019F32A9518F200C39030 /* MediaAPI.framework */; };
 		BE8019F52A95194200C39030 /* MediaAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE8019F32A9518F200C39030 /* MediaAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BE8019F72A951A0F00C39030 /* Kingfisher.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE8019F62A951A0F00C39030 /* Kingfisher.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BE960B352AAB476500732B45 /* BestMoviesAPIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE960B342AAB476500732B45 /* BestMoviesAPIState.swift */; };
 		BEF0CB4E2A91139C0019C1F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF0CB4D2A91139C0019C1F9 /* AppDelegate.swift */; };
 		BEF0CB502A91139C0019C1F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF0CB4F2A91139C0019C1F9 /* SceneDelegate.swift */; };
 		BEF0CB572A91139D0019C1F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEF0CB562A91139D0019C1F9 /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 		BE8019CD2A94EFF700C39030 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		BE8019EE2A9518F200C39030 /* MediaAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MediaAPI.xcodeproj; path = ../../MediaAPI/MediaAPI.xcodeproj; sourceTree = "<group>"; };
 		BE8019F62A951A0F00C39030 /* Kingfisher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Kingfisher.xcframework; path = ../Vendor/Carthage/Build/Kingfisher.xcframework; sourceTree = "<group>"; };
+		BE960B342AAB476500732B45 /* BestMoviesAPIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestMoviesAPIState.swift; sourceTree = "<group>"; };
 		BEF0CB4A2A91139C0019C1F9 /* BestMoviesMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestMoviesMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF0CB4D2A91139C0019C1F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEF0CB4F2A91139C0019C1F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		BE960B302AAB475300732B45 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				BE960B342AAB476500732B45 /* BestMoviesAPIState.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
 		BEF0CB412A91139C0019C1F9 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +194,7 @@
 		BEF0CB4C2A91139C0019C1F9 /* BestMoviesMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				BE960B302AAB475300732B45 /* Types */,
 				BE8019CC2A94EFDA00C39030 /* Helpers */,
 				BEF0CB5B2A91139D0019C1F9 /* Info.plist */,
 				BEF0CBCF2A9126510019C1F9 /* Scenes */,
@@ -472,6 +483,7 @@
 				BEF0CBE52A91FE5A0019C1F9 /* MoviePresentation.swift in Sources */,
 				BEF0CB502A91139C0019C1F9 /* SceneDelegate.swift in Sources */,
 				BEF0CBE72A91FF200019C1F9 /* MovieListViewModel.swift in Sources */,
+				BE960B352AAB476500732B45 /* BestMoviesAPIState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

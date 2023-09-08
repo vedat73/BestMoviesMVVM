@@ -5,25 +5,19 @@
 //  Created by Vedat Ozlu on 20.08.2023.
 //
 
+import Combine
 import Foundation
 
 protocol MovieListViewModelProtocol {
-    var delegate: MovieListViewModelDelegate? { get set }
+    // MARK: - Properties
+    
+    var loadingPublisher: AnyPublisher<Bool, Never> { get }
+    var hasBestMoviesDataPublisher: AnyPublisher<Bool, Never> { get }
+    var hasErrorPublisher: AnyPublisher<Bool, Never> { get }
+    var bestMoviesStatePublisher : AnyPublisher<BestMoviesAPIState, Never> { get }
+    
+    // MARK: - Functions
+    
     func load()
-    func selectMovie(at index: Int)
-}
-
-enum MovieListViewModelOutput: Equatable {
-    case updateTitle(String)
-    case setLoading(Bool)
-    case showMovieList([MoviePresentation])
-}
-
-enum MovieListViewRoute {
-    case detail(MovieDetailViewModelProtocol)
-}
-
-protocol MovieListViewModelDelegate: AnyObject {
-    func handleViewModelOutput(_ output: MovieListViewModelOutput)
-    func navigate(to route: MovieListViewRoute)
+    func selectMovie(at index: Int) -> MovieDetailViewModel
 }
