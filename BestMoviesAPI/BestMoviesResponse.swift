@@ -28,3 +28,14 @@ public struct BestMoviesResponse: Decodable {
         self.entry = try feedContainer.decode([Movie].self, forKey: .entry)
     }
 }
+/*
+ {
+    feed : {
+        entry : [
+            { },
+            { },
+            ...
+        ]
+    }
+ }
+ */

@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MediaAPI/MediaAPI.xcodeproj">
+      location = "group:BestMoviesMVVM/BestMoviesMVVM.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:BestMoviesMVVM/BestMoviesMVVM.xcodeproj">
+      location = "group:MediaAPI/MediaAPI.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:BestMoviesAPI/BestMoviesAPI.xcodeproj">

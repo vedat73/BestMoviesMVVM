@@ -20,7 +20,7 @@ final class MovieTests: XCTestCase {
         XCTAssertEqual(movie.name.value, "No Hard Feelings")
         XCTAssertEqual(movie.price?.value, "$19.99")
         XCTAssertEqual(movie.releaseDate?.attributes?.value, "June 16, 2023")
-        XCTAssertEqual(movie.images.count, 3)
+        XCTAssertEqual(movie.imageURL!.count, 3)
     }
 
 }
